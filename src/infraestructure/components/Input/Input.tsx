@@ -24,6 +24,7 @@ export const Input = (inputProps: InputProps) => {
           <InputAdornment position="end">
             {endIcon}
           </InputAdornment>,
+          
       }}
     />
   )
