@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { Navbar } from "../../components/Navbar/Navbar";
 
 interface PrivateLayoutProps {
@@ -10,9 +11,9 @@ export const PrivateLayout = (privateLayoutProps:PrivateLayoutProps) => {
     const { children } = privateLayoutProps;
 
   return (
-    <div>
+    <Box width={'100%'} height={'92vh'}>
         <Navbar />
         {children}
-    </div>
+    </Box>
   )
 }

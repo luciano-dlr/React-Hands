@@ -8,7 +8,6 @@ export type InputProps = {
     endIcon?: JSX.Element;
     inputState:string;
     setInputState:Dispatch<SetStateAction<string>> 
-    
 }
 
 

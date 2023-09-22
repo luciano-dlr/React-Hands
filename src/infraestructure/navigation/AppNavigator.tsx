@@ -3,6 +3,7 @@ import { Login } from "../features/Login/Login"
 import { Home } from "../features/Home/Home"
 import useAuthStore from "../zustand/auth/useAuthStore"
 import { PrivateLayout } from "../layouts/PrivateLayout/PrivateLayout"
+import { Register } from "../features/Register/Register"
 
 export const AppNavigator = () => {
 
@@ -26,6 +27,7 @@ export const AppNavigator = () => {
             :
             <>
               <Route path="/auth/login" element={<Login />} />
+              <Route path="/auth/register" element={<Register />} />
               <Route path="/*" element={<Navigate to='/auth/login' />} />
             </>
         }
