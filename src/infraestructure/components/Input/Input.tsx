@@ -1,12 +1,12 @@
 import { TextField, Input as InputMaterial, InputAdornment, FormControl, InputLabel, OutlinedInput, IconButton } from "@mui/material";
-import { InputProps } from "./types";
+import { InputProps } from './types';
 
 export const Input = (inputProps: InputProps) => {
 
   // Sacar ciertos valores de un objeto
   // Interfaz o Type === Esqueleto o definicion de una estructura (Ej: InputProps)
   // inputProps => Por otra parte, inputProps es el contenido ()
-  const { label, variant, placeholder, endIcon, startIcon, inputState, setInputState } = inputProps;
+  const { label, variant, placeholder, endIcon, startIcon, inputState, setInputState, type , borderRadius} = inputProps;
 
   return (
     <TextField
@@ -14,8 +14,11 @@ export const Input = (inputProps: InputProps) => {
       variant={variant}
       placeholder={placeholder}
       value={inputState}
+      fullWidth
+      type={type}
       onChange={(e) => setInputState(e.target.value)}
       InputProps={{
+        style:{borderRadius:borderRadius},
         startAdornment:
           <InputAdornment position="start">
             {startIcon}

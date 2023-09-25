@@ -7,6 +7,9 @@ export const useGoogleSingIn = () => {
   const auth = getAuth();
   const provider = new GoogleAuthProvider()
 
+
+ 
+
   const onGoogleSignIn = () => {
 
       signInWithPopup(auth, provider)

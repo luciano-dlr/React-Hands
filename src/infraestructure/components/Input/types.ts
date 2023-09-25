@@ -8,6 +8,16 @@ export type InputProps = {
     endIcon?: JSX.Element;
     inputState:string;
     setInputState:Dispatch<SetStateAction<string>> 
+    type?: InputType;
+    borderRadius?:number | string;
 }
+
+export enum InputType {
+    PASSWORD = 'password',
+    TEXT = 'text'
+}
+
+
+
 
 

@@ -1,11 +1,16 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+import useAuthStore from "../../zustand/auth/useAuthStore";
 
 export const useCreateAccount = () => {
 
     const [data, setData] = useState<any>();
     const [isLoading, setIsLoading] = useState<boolean>();
     const [error, setError] = useState<any>(null);
+
+    const {setUser} = useAuthStore()
+    
+
 
     const createUser = (email: string, password: string) => {
         setIsLoading(true)
@@ -14,6 +19,7 @@ export const useCreateAccount = () => {
             .then((userCredential) => {
                 console.log('userCredential',userCredential)
                 const user = userCredential.user;
+                setUser(user)
                 setData(user)
             })
             .catch((error) => {

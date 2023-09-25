@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import useAuthStore from '../../zustand/auth/useAuthStore';
+import { Navigate } from 'react-router-dom';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -21,7 +22,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export const Navbar = () => {
 
-    const { user } = useAuthStore()
+    const { user,setUser } = useAuthStore()
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -40,12 +41,27 @@ export const Navbar = () => {
     const handleCloseUserMenu = () => {
       setAnchorElUser(null);
     };
+    const handleClickLogout = () => {
+      setUser(null)
+    }
+    
+    // const pages = {{
+    //   name:'Products'
+    // },{
+      
+    // }}
+
+
+
+    // const handleClickNavigateProducts = () =>{
+    //   Navigate.to
+    // }
   
     return (
       <AppBar position="static" sx={{height:'8vh'}}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
             <Typography
               variant="h6"
               noWrap
@@ -98,6 +114,21 @@ export const Navbar = () => {
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 ))}
+                {/* {pages.map((page) => {
+                  if(page === 'Products'){
+                    return(
+                      
+                    <MenuItem key={page} onClick={handleClickLogout}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </MenuItem>
+                    )
+                  }
+                  return(  
+                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </MenuItem>
+                  )
+                })} */}
               </Menu>
             </Box>
             <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -120,7 +151,7 @@ export const Navbar = () => {
               LOGO
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              {pages.map((page) => (
+              {/* {pages.map((page) => (
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
@@ -128,7 +159,22 @@ export const Navbar = () => {
                 >
                   {page}
                 </Button>
-              ))}
+              ))} */}
+              {pages.map((page) => {
+                  if(page === 'Products'){
+                    return(
+                      
+                    <MenuItem key={page} onClick={handleClickLogout}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </MenuItem>
+                    )
+                  }
+                  return(  
+                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </MenuItem>
+                  )
+                })}
             </Box>
   
             <Box sx={{ flexGrow: 0 }}>
@@ -153,11 +199,21 @@ export const Navbar = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
+                {settings.map((setting) => {
+                  if(setting === 'Logout'){
+                    return(
+                      
+                    <MenuItem key={setting} onClick={handleClickLogout}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                    )
+                  }
+                  return(  
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
-                ))}
+                  )
+                })}
               </Menu>
             </Box>
           </Toolbar>
